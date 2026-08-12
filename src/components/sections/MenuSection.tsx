@@ -39,7 +39,8 @@ export function MenuSection({ onOpenContact }: MenuSectionProps) {
   }, [carouselImages.length]);
 
   const menuItems = [
-    { name: "Custom Cakes", price: "from $85" },
+    { name: "Cupcakes", price: "$40/dz" },
+    { name: "Cake Pops", price: "$40/dz" },
     { name: "Fondant Cookies", price: "$45/dz" },
     { name: "Alfajores", price: "$30/dz" },
     { name: "Chocolate Dipped Strawberries", price: "$40/dz" },
@@ -127,11 +128,11 @@ export function MenuSection({ onOpenContact }: MenuSectionProps) {
               </h3>
 
               {/* Menu Items (Playfair Serif Italic exact to reference) */}
-              <div className="w-full flex flex-col gap-6 mb-8">
+              <div className="w-full flex flex-col gap-4 md:gap-5 mb-6">
                 {menuItems.map((item, index) => (
                   <div key={index} className="flex justify-between items-baseline gap-4 w-full">
-                    <span className="font-serif italic text-lg md:text-xl text-[#3B2314] whitespace-nowrap">{item.name}</span>
-                    <span className="font-serif italic text-base md:text-lg text-[#3B2314]/90">{item.price}</span>
+                    <span className="font-serif italic text-base md:text-lg text-[#3B2314] whitespace-nowrap">{item.name}</span>
+                    <span className="font-serif italic text-sm md:text-base text-[#3B2314]/90">{item.price}</span>
                   </div>
                 ))}
               </div>

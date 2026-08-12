@@ -11,6 +11,7 @@ import { Testimonials } from "@/components/sections/Testimonials";
 import { GallerySection } from "@/components/sections/GallerySection";
 import { Footer } from "@/components/sections/Footer";
 import { ContactModal } from "@/components/ui/ContactModal";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 
 export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -34,6 +35,10 @@ export default function Home() {
         <ContactModal 
           isOpen={isContactOpen} 
           onClose={handleCloseContact} 
+        />
+
+        <WhatsAppButton 
+          onOpenContact={handleOpenContact} 
         />
       </div>
     </main>

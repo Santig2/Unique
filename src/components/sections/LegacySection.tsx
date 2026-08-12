@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { AnimatedContainer } from "../ui/AnimatedContainer";
 
 interface LegacySectionProps {
@@ -5,15 +8,39 @@ interface LegacySectionProps {
 }
 
 export function LegacySection({ onOpenContact }: LegacySectionProps) {
+  const bgImages = [
+    "/arreglo1.png",
+    "/galleta.png",
+    "/arreglo.png",
+    "/croassant.png",
+    "/alfajor.png",
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % bgImages.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [bgImages.length]);
+
   return (
-    <section id="story" className="w-full relative min-h-[600px] md:min-h-[800px] flex items-center justify-end">
-      {/* Background Image - Full width */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1600&auto=format&fit=crop" 
-          alt="Event Catering Setup" 
-          className="w-full h-full object-cover"
-        />
+    <section id="story" className="w-full relative min-h-[600px] md:min-h-[800px] flex items-center justify-end overflow-hidden">
+      {/* Background Image Carousel - Full width */}
+      <div className="absolute inset-0 z-0 bg-[#38261A]">
+        {bgImages.map((src, index) => (
+          <img
+            key={src}
+            src={src}
+            alt={`Experience Exceptional Background ${index + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+              index === currentIndex ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
+        {/* Subtle dark overlay for contrast */}
+        <div className="absolute inset-0 bg-black/20 pointer-events-none" />
       </div>
 
       {/* Pink Card - Floating on right */}

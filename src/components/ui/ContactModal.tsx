@@ -1,8 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, CheckCircle2, Calendar, Users, Sparkles, Send } from "lucide-react";
-import { useState } from "react";
+import { X, Sparkles, MessageSquare, Phone, ArrowRight } from "lucide-react";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -10,35 +9,10 @@ interface ContactModalProps {
 }
 
 export function ContactModal({ isOpen, onClose }: ContactModalProps) {
-  const [submitted, setSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    eventType: "wedding",
-    guests: "50-100",
-    date: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
-
-  const handleReset = () => {
-    setSubmitted(false);
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      eventType: "wedding",
-      guests: "50-100",
-      date: "",
-      message: "",
-    });
-    onClose();
-  };
+  const phoneNumber = "+1 (512) 621-4389";
+  const whatsappUrl = "https://wa.me/15126214389?text=Hello!%20I%20would%20like%20to%20get%20more%20information%20about%20Unique%20Catering%20%26%20Bakery.";
+  const smsUrl = "sms:+15126214389?body=Hello!%20I%20would%20like%20to%20get%20more%20information%20about%20Unique%20Catering%20%26%20Bakery.";
+  const callUrl = "tel:+15126214389";
 
   return (
     <AnimatePresence>
@@ -59,153 +33,122 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-            className="relative w-full max-w-2xl bg-[#FAF6EE] text-[#38261A] rounded-3xl p-8 md:p-12 shadow-2xl z-10 border border-[#38261A]/10 my-auto"
+            className="relative w-full max-w-lg bg-[#FAF6EE] text-[#38261A] rounded-3xl p-8 md:p-10 shadow-2xl z-10 border border-[#38261A]/10 my-auto overflow-hidden"
           >
+            {/* Background Watermark */}
+            <img 
+              src="/icono-unique-gris.png" 
+              alt="" 
+              className="absolute opacity-[0.07] pointer-events-none w-[350px] object-contain -right-12 -bottom-12 z-0"
+            />
+
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-6 right-6 p-2 rounded-full bg-[#38261A]/5 hover:bg-[#38261A]/10 text-[#38261A] transition-colors"
+              className="absolute top-6 right-6 p-2 rounded-full bg-[#38261A]/5 hover:bg-[#38261A]/10 text-[#38261A] transition-colors z-20"
+              aria-label="Close"
             >
               <X className="w-5 h-5" />
             </button>
 
-            {submitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center text-center py-8"
-              >
-                <div className="w-16 h-16 bg-[#FFC0CB] rounded-full flex items-center justify-center mb-6 text-[#38261A]">
-                  <CheckCircle2 className="w-10 h-10" />
-                </div>
-                <h3 className="font-display text-5xl md:text-6xl text-[#38261A] mb-4">
-                  Thank You!
-                </h3>
-                <p className="font-body text-base md:text-lg text-[#38261A]/80 max-w-md mb-8 leading-relaxed">
-                  Chef Patricia and our catering team have received your request. We’ll review your details and reach out within 24 hours.
-                </p>
-                <button
-                  onClick={handleReset}
-                  className="bg-[#38261A] text-[#FAF6EE] font-ui uppercase tracking-wider text-xs md:text-sm px-8 py-3.5 rounded-full hover:scale-95 transition-transform"
-                >
-                  Close Window
-                </button>
-              </motion.div>
-            ) : (
-              <div>
-                <div className="flex items-center gap-2 mb-2 text-[#38261A]">
-                  <Sparkles className="w-4 h-4 text-[#FFC0CB]" />
-                  <span className="font-ui uppercase tracking-widest text-xs font-semibold">
-                    Get a Custom Consultation
-                  </span>
-                </div>
-
-                <h2 className="font-display text-4xl md:text-6xl text-[#38261A] mb-3 leading-none">
-                  Let's Plan Your Event
-                </h2>
-                <p className="font-body text-sm text-[#38261A]/70 mb-8">
-                  Fill out the form below to receive a personalized catering quote from Unique.
-                </p>
-
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-ui uppercase tracking-wider text-[#38261A] font-semibold mb-1.5">
-                        Your Name *
-                      </label>
-                      <input
-                        required
-                        type="text"
-                        placeholder="Patricia Smith"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-white border border-[#38261A]/15 rounded-xl px-4 py-2.5 text-sm text-[#38261A] focus:outline-none focus:border-[#38261A]"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-ui uppercase tracking-wider text-[#38261A] font-semibold mb-1.5">
-                        Email Address *
-                      </label>
-                      <input
-                        required
-                        type="email"
-                        placeholder="patricia@example.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-white border border-[#38261A]/15 rounded-xl px-4 py-2.5 text-sm text-[#38261A] focus:outline-none focus:border-[#38261A]"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div>
-                      <label className="block text-xs font-ui uppercase tracking-wider text-[#38261A] font-semibold mb-1.5">
-                        Event Type
-                      </label>
-                      <select
-                        value={formData.eventType}
-                        onChange={(e) => setFormData({ ...formData, eventType: e.target.value })}
-                        className="w-full bg-white border border-[#38261A]/15 rounded-xl px-3 py-2.5 text-sm text-[#38261A] focus:outline-none focus:border-[#38261A]"
-                      >
-                        <option value="wedding">Wedding Catering</option>
-                        <option value="corporate">Corporate Gala</option>
-                        <option value="custom-cake">Custom Cake / Bakery</option>
-                        <option value="private-party">Private Party</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-ui uppercase tracking-wider text-[#38261A] font-semibold mb-1.5 flex items-center gap-1">
-                        <Users className="w-3.5 h-3.5" /> Guest Count
-                      </label>
-                      <select
-                        value={formData.guests}
-                        onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
-                        className="w-full bg-white border border-[#38261A]/15 rounded-xl px-3 py-2.5 text-sm text-[#38261A] focus:outline-none focus:border-[#38261A]"
-                      >
-                        <option value="1-25">1 - 25 Guests</option>
-                        <option value="25-50">25 - 50 Guests</option>
-                        <option value="50-100">50 - 100 Guests</option>
-                        <option value="100+">100+ Guests</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-ui uppercase tracking-wider text-[#38261A] font-semibold mb-1.5 flex items-center gap-1">
-                        <Calendar className="w-3.5 h-3.5" /> Event Date
-                      </label>
-                      <input
-                        type="date"
-                        value={formData.date}
-                        onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                        className="w-full bg-white border border-[#38261A]/15 rounded-xl px-3 py-2 text-sm text-[#38261A] focus:outline-none focus:border-[#38261A]"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-ui uppercase tracking-wider text-[#38261A] font-semibold mb-1.5">
-                      Tell Us About Your Vision
-                    </label>
-                    <textarea
-                      rows={3}
-                      placeholder="Share details about menu preferences, dietary needs, or aesthetic theme..."
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-white border border-[#38261A]/15 rounded-xl px-4 py-2.5 text-sm text-[#38261A] focus:outline-none focus:border-[#38261A] resize-none"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-[#38261A] hover:bg-black text-[#FAF6EE] font-ui uppercase tracking-wider text-xs md:text-sm font-semibold py-3.5 rounded-full hover:scale-[0.99] transition-all flex items-center justify-center gap-2 mt-2 shadow-lg"
-                  >
-                    <Send className="w-4 h-4" /> Send Quote Request
-                  </button>
-                </form>
+            <div className="relative z-10">
+              <div className="flex items-center gap-2 mb-3 text-[#38261A]">
+                <Sparkles className="w-4 h-4 text-[#FFC0CB]" />
+                <span className="font-ui uppercase tracking-widest text-xs font-semibold">
+                  Contact Chef Patricia
+                </span>
               </div>
-            )}
+
+              <h2 className="font-display text-4xl md:text-5xl text-[#38261A] mb-3 leading-none">
+                How would you like to connect?
+              </h2>
+              <p className="font-body text-sm md:text-base text-[#38261A]/80 mb-8 leading-relaxed">
+                Select your preferred messaging option to get a quote or place your order directly.
+              </p>
+
+              {/* Contact Method Buttons */}
+              <div className="flex flex-col gap-4 mb-6">
+                
+                {/* 1. WhatsApp Button */}
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={onClose}
+                  className="group flex items-center justify-between bg-[#25D366] hover:bg-[#20ba5a] text-white p-4 md:p-5 rounded-2xl shadow-md transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="bg-white/20 p-2.5 rounded-xl">
+                      <svg 
+                        className="w-6 h-6 fill-current text-white" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.705 1.754zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                      </svg>
+                    </div>
+                    <div className="text-left">
+                      <div className="font-ui font-bold text-base md:text-lg uppercase tracking-wider">
+                        WhatsApp Chat
+                      </div>
+                      <div className="font-body text-xs md:text-sm opacity-90">
+                        Chat directly on WhatsApp
+                      </div>
+                    </div>
+                  </div>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+
+                {/* 2. Text Message (SMS) Button */}
+                <a
+                  href={smsUrl}
+                  onClick={onClose}
+                  className="group flex items-center justify-between bg-[#38261A] hover:bg-black text-[#FAF6EE] p-4 md:p-5 rounded-2xl shadow-md transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="bg-white/10 p-2.5 rounded-xl">
+                      <MessageSquare className="w-6 h-6 text-pink" />
+                    </div>
+                    <div className="text-left">
+                      <div className="font-ui font-bold text-base md:text-lg uppercase tracking-wider">
+                        Text Message (SMS)
+                      </div>
+                      <div className="font-body text-xs md:text-sm text-[#FAF6EE]/80">
+                        Send a traditional text message
+                      </div>
+                    </div>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-pink group-hover:translate-x-1 transition-transform" />
+                </a>
+
+                {/* 3. Direct Phone Call */}
+                <a
+                  href={callUrl}
+                  onClick={onClose}
+                  className="group flex items-center justify-between bg-white border border-[#38261A]/15 hover:border-[#38261A]/40 text-[#38261A] p-4 md:p-5 rounded-2xl shadow-sm transition-all duration-200"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="bg-[#38261A]/5 p-2.5 rounded-xl">
+                      <Phone className="w-6 h-6 text-[#38261A]" />
+                    </div>
+                    <div className="text-left">
+                      <div className="font-ui font-bold text-sm md:text-base uppercase tracking-wider">
+                        Direct Phone Call
+                      </div>
+                      <div className="font-body text-xs md:text-sm text-[#38261A]/70 font-semibold">
+                        {phoneNumber}
+                      </div>
+                    </div>
+                  </div>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform text-[#38261A]/60" />
+                </a>
+
+              </div>
+
+              {/* Footer Phone Info */}
+              <div className="text-center font-ui text-xs text-[#38261A]/60 uppercase tracking-widest font-medium">
+                Phone / WhatsApp: <span className="font-semibold text-[#38261A]">{phoneNumber}</span>
+              </div>
+            </div>
           </motion.div>
         </div>
       )}

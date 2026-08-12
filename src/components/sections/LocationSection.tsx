@@ -9,11 +9,10 @@ interface LocationSectionProps {
 
 export function LocationSection({ onOpenContact }: LocationSectionProps) {
   const serviceAreas = [
-    "Downtown Austin & Central TX",
-    "Westlake, Lakeway & Bee Cave",
-    "Round Rock & Cedar Park",
-    "Dripping Springs (Wedding Capital)",
-    "Georgetown & San Marcos Area",
+    "Cedar Park & Leander (Local Delivery)",
+    "Round Rock & North Austin (Local Delivery)",
+    "Nearby Surrounding Areas (Local Delivery)",
+    "Store Pickup at Our Location (All Other Areas)",
   ];
 
   return (
@@ -40,8 +39,8 @@ export function LocationSection({ onOpenContact }: LocationSectionProps) {
             Where Do We Operate?
           </h2>
 
-          <p className="font-body italic text-[#38261A]/85 text-lg md:text-xl max-w-[650px] leading-relaxed">
-            Proudly based in <strong className="font-semibold text-[#38261A]">Austin, Texas</strong>. We offer full-service catering and artisanal bakery delivery throughout the metropolitan area.
+          <p className="font-body italic text-[#38261A]/85 text-lg md:text-xl max-w-[700px] leading-relaxed">
+            Proudly based in <strong className="font-semibold text-[#38261A]">Austin, Texas</strong>. We offer <strong className="font-semibold text-[#38261A]">Local Delivery</strong> to nearby areas such as Cedar Park and Leander. For all other locations, orders are available for pickup at our kitchen.
           </p>
         </div>
 
@@ -109,15 +108,15 @@ export function LocationSection({ onOpenContact }: LocationSectionProps) {
             className="w-full lg:w-1/2 flex flex-col items-start"
           >
             <div className="bg-pink text-[#38261A] font-serif italic text-lg px-5 py-2 rounded-full mb-6 border border-black/10 shadow-sm">
-              Covers up to 50 miles from Central Austin
+              Local Delivery to Near Areas & In-Store Pickup
             </div>
 
             <h3 className="font-serif text-3xl md:text-4xl text-[#38261A] font-normal mb-6 leading-snug">
-              Full-Service Catering & Scheduled Local Deliveries
+              Local Delivery & Pickups
             </h3>
 
             <p className="font-body text-[#38261A]/85 text-base md:text-lg leading-relaxed mb-8">
-              We bring our culinary creations and fine pastry displays directly to your venue or residence. Serving weddings, corporate galas, and special celebrations across:
+              We offer convenient local delivery for nearby communities and store pickup for all other areas:
             </p>
 
             {/* Service Areas Checklist */}
