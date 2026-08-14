@@ -4,14 +4,16 @@ import { motion } from "framer-motion";
 
 export function GallerySection() {
   const images = [
+    "/mesa1.png",
     "/pastel1.png",
-    "https://images.unsplash.com/photo-1550617931-e17a7b70dce2?q=80&w=800&auto=format&fit=crop", // Pink cupcakes
+    "/cake-pops.png",
+    "/mesa2.png",
     "/pastel2.png",
-    "https://images.unsplash.com/photo-1514517521153-1be72277b32f?q=80&w=800&auto=format&fit=crop", // Tarts / desserts
+    "/cupcake1.png",
+    "/mesa3.png",
     "/pastel3.png",
-    "https://images.unsplash.com/photo-1614145121029-83a9f7b68bf4?q=80&w=800&auto=format&fit=crop", // Charcuterie board
+    "/cake-pop2.png",
     "/pastel4.png",
-    "https://images.unsplash.com/photo-1587314168485-3236d6710814?q=80&w=800&auto=format&fit=crop", // Pastries
   ];
 
   // Duplicar el array de imágenes para crear un bucle continuo e infinito perfecto

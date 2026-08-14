@@ -128,8 +128,8 @@ export function Hero({ onOpenContact }: HeroProps) {
           {/* Card 7: Fondant Gourmet Cake */}
           <div className="w-[280px] sm:w-[350px] md:w-[420px] h-[360px] md:h-[550px] flex-shrink-0 overflow-hidden relative rounded-3xl md:rounded-[40px] shadow-xl border border-black/5">
             <img 
-              src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=800&auto=format&fit=crop" 
-              alt="Gourmet Fondant Cake" 
+              src="/mesa1.png" 
+              alt="Gourmet Catering Table" 
               className="w-full h-full object-cover"
             />
           </div>
